@@ -79,6 +79,9 @@
     <Filter Include="Library\Object\Object3D">
       <UniqueIdentifier>{1a7db2f5-bce6-4620-8b37-c173469d430f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Application\Effect">
+      <UniqueIdentifier>{223dcf8d-dcd5-413a-910c-69da8bb3f420}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -140,6 +143,9 @@
     </ClCompile>
     <ClCompile Include="source\Library\object3D.cpp">
       <Filter>Library\Object\Object3D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\effect.cpp">
+      <Filter>Application\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="source\Library\object3D.h">
       <Filter>Library\Object\Object3D</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\effect.h">
+      <Filter>Application\Effect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

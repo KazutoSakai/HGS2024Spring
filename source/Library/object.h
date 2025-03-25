@@ -43,7 +43,9 @@ public:
 		Low,
 		Default = 3,
 		Object,
+		Effect_Low,
 		Character,
+		Effect_Up,
 		UI,
 
 		Max
