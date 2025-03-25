@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Application">
+      <UniqueIdentifier>{0df63d29-87f9-4bd2-85a5-d592730a483d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\App">
+      <UniqueIdentifier>{1b528008-1661-4de0-a7ab-b24ab582bacf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Scene">
+      <UniqueIdentifier>{def03a68-7a59-423c-9012-10b41093f0d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Scene\Game">
+      <UniqueIdentifier>{57d8b9f6-e5b4-40a9-9e85-db4a77b93490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Scene\Ranking">
+      <UniqueIdentifier>{eef0bb03-7638-4ccc-856e-a0e9c8d75e48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Scene\Result">
+      <UniqueIdentifier>{4e7ad191-53bb-4019-be91-88e189692c63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Scene\Title">
+      <UniqueIdentifier>{35fe598a-d286-4c95-8930-cebc86211774}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Scene\Manager">
+      <UniqueIdentifier>{f5cdb4b9-ba3c-483a-83ee-55453b0cf650}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library">
+      <UniqueIdentifier>{fa313a12-400a-41f9-abdb-83c0a49ca618}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Object">
+      <UniqueIdentifier>{9323a5be-b763-4081-9041-792d67de1c74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Light">
+      <UniqueIdentifier>{dc89d9b1-0289-460d-bd9c-1d92d9d1a91e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Input">
+      <UniqueIdentifier>{80ee0527-b840-43f4-afcb-6f9ab4a78c4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Object\Object2D">
+      <UniqueIdentifier>{79433dfc-5393-4f4d-9d97-d293c17c4267}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Math">
+      <UniqueIdentifier>{c77bb5ff-1c97-4e4d-80cf-96d54f77806c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Renderer">
+      <UniqueIdentifier>{9087a38c-4a9a-4703-9950-c2e2ac0443b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Sound">
+      <UniqueIdentifier>{17a191fd-6db1-410d-8387-4535157542da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Stencil">
+      <UniqueIdentifier>{9bfb279a-1d5d-4093-9e36-5f0b3f03f8d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Texture">
+      <UniqueIdentifier>{05df2e14-2918-4b21-b32d-58a02c79e15a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Utility">
+      <UniqueIdentifier>{30c421ca-9c5c-4e25-b377-023e33f52343}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\View">
+      <UniqueIdentifier>{c7d6cdcf-4351-40e9-b651-9157bd299aa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Object\ObjectX">
+      <UniqueIdentifier>{252860c8-6e25-4a6a-be1b-882a5ddb1916}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Object\Object3D">
+      <UniqueIdentifier>{1a7db2f5-bce6-4620-8b37-c173469d430f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\application.cpp">
+      <Filter>Application\App</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\SceneGame.cpp">
+      <Filter>Application\Scene\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\SceneRanking.cpp">
+      <Filter>Application\Scene\Ranking</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\SceneResult.cpp">
+      <Filter>Application\Scene\Result</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\SceneTitle.cpp">
+      <Filter>Application\Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\SceneManager.cpp">
+      <Filter>Application\Scene\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\input.cpp">
+      <Filter>Library\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\light.cpp">
+      <Filter>Library\Light</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\object.cpp">
+      <Filter>Library\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\object2D.cpp">
+      <Filter>Library\Object\Object2D</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\origin_math.cpp">
+      <Filter>Library\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\renderer.cpp">
+      <Filter>Library\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\sound.cpp">
+      <Filter>Library\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\stencil.cpp">
+      <Filter>Library\Stencil</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\texture.cpp">
+      <Filter>Library\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\utility.cpp">
+      <Filter>Library\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\view.cpp">
+      <Filter>Library\View</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\objectX.cpp">
+      <Filter>Library\Object\ObjectX</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\object3D.cpp">
+      <Filter>Library\Object\Object3D</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\main.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\application.h">
+      <Filter>Application\App</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\SceneGame.h">
+      <Filter>Application\Scene\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\SceneRanking.h">
+      <Filter>Application\Scene\Ranking</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\SceneResult.h">
+      <Filter>Application\Scene\Result</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\SceneTitle.h">
+      <Filter>Application\Scene\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\SceneManager.h">
+      <Filter>Application\Scene\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\SceneBase.h">
+      <Filter>Application\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\input.h">
+      <Filter>Library\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\light.h">
+      <Filter>Library\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\object.h">
+      <Filter>Library\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\object2D.h">
+      <Filter>Library\Object\Object2D</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\origin_math.h">
+      <Filter>Library\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\renderer.h">
+      <Filter>Library\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\sound.h">
+      <Filter>Library\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\stencil.h">
+      <Filter>Library\Stencil</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\texture.h">
+      <Filter>Library\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\utility.h">
+      <Filter>Library\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\view.h">
+      <Filter>Library\View</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\objectX.h">
+      <Filter>Library\Object\ObjectX</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\object3D.h">
+      <Filter>Library\Object\Object3D</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
