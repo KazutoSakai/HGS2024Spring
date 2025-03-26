@@ -41,6 +41,12 @@ HRESULT CTimer::Init()
 
 void CTimer::Uninit()
 {
+	for (int x = 0; x < TIME_NUM; x++)
+	{
+		m_pNumberList[x]->Uninit();
+		m_pNumberList[x] = nullptr;
+	}
+
 	Release();
 }
 

@@ -21,6 +21,8 @@
 
 #include "SideUI.h"
 
+#include "RateBallManager.h"
+
 CSceneGame::CSceneGame() : m_pPlayer(nullptr), m_pTimer(nullptr), m_pSideL(nullptr), m_pSideR(nullptr), m_pDarkPolygon(nullptr)
 {
 	m_Life = 0;
@@ -80,6 +82,9 @@ HRESULT CSceneGame::Init()
 		m_pDarkPolygon->SetDrawFlg(false);
 	}
 
+	// ”{—¦‚½‚Ü
+	CRateBallManager::GetInstance()->Init();
+
 	return S_OK;
 }
 
@@ -98,6 +103,9 @@ void CSceneGame::Update()
 {
 	// ƒXƒRƒA
 	CScoreManager::GetInstance()->Update();
+
+	// ”{—¦‚½‚Ü
+	CRateBallManager::GetInstance()->Update();
 
 	auto pInput = CApplication::GetInstance()->GetInput();
 	if (m_Life <= 0)
@@ -122,7 +130,7 @@ void CSceneGame::Update()
 /// </summary>
 void CSceneGame::Draw()
 {
-
+	
 }
 
 void CSceneGame::Resporn()
@@ -167,6 +175,7 @@ void CSceneGame::RestartGame()
 		m_pPlayer->Uninit();
 	CBlockManager::GetInstance()->ReleaseBlock();
 	CScoreManager::GetInstance()->Uninit();
+	CRateBallManager::GetInstance()->Uninit();
 	if (m_pTimer != nullptr)
 		m_pTimer->Uninit();
 	if (m_pSideL != nullptr)
