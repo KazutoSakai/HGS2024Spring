@@ -151,12 +151,14 @@
     <ClCompile Include="source\Application\Block.cpp" />
     <ClCompile Include="source\Application\BlockManager.cpp" />
     <ClCompile Include="source\Application\effect.cpp" />
+    <ClCompile Include="source\Application\number.cpp" />
     <ClCompile Include="source\Application\Player.cpp" />
     <ClCompile Include="source\Application\SceneGame.cpp" />
     <ClCompile Include="source\Application\SceneManager.cpp" />
     <ClCompile Include="source\Application\SceneRanking.cpp" />
     <ClCompile Include="source\Application\SceneResult.cpp" />
     <ClCompile Include="source\Application\SceneTitle.cpp" />
+    <ClCompile Include="source\Application\ScoreManager.cpp" />
     <ClCompile Include="source\Library\collision.cpp" />
     <ClCompile Include="source\Library\input.cpp" />
     <ClCompile Include="source\Library\light.cpp" />
@@ -179,6 +181,7 @@
     <ClInclude Include="source\Application\Block.h" />
     <ClInclude Include="source\Application\BlockManager.h" />
     <ClInclude Include="source\Application\effect.h" />
+    <ClInclude Include="source\Application\number.h" />
     <ClInclude Include="source\Application\Player.h" />
     <ClInclude Include="source\Application\SceneBase.h" />
     <ClInclude Include="source\Application\SceneGame.h" />
@@ -186,6 +189,7 @@
     <ClInclude Include="source\Application\SceneRanking.h" />
     <ClInclude Include="source\Application\SceneResult.h" />
     <ClInclude Include="source\Application\SceneTitle.h" />
+    <ClInclude Include="source\Application\ScoreManager.h" />
     <ClInclude Include="source\Library\collision.h" />
     <ClInclude Include="source\Library\input.h" />
     <ClInclude Include="source\Library\light.h" />

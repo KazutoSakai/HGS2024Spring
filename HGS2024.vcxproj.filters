@@ -97,6 +97,12 @@
     <Filter Include="Application\Block">
       <UniqueIdentifier>{7a25688a-6941-4907-a246-79c002ca642b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Application\Number">
+      <UniqueIdentifier>{3cae59b0-c367-4bd7-8514-24262be1aa68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\ScoreManager">
+      <UniqueIdentifier>{d0e26e4a-e1b7-46d2-8656-692baa5579e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -176,6 +182,12 @@
     </ClCompile>
     <ClCompile Include="source\Application\Block.cpp">
       <Filter>Application\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\number.cpp">
+      <Filter>Application\Number</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\ScoreManager.cpp">
+      <Filter>Application\ScoreManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +271,12 @@
     </ClInclude>
     <ClInclude Include="source\Application\Block.h">
       <Filter>Application\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\number.h">
+      <Filter>Application\Number</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\ScoreManager.h">
+      <Filter>Application\ScoreManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

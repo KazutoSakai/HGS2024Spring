@@ -3,6 +3,7 @@
 #include "application.h"
 
 #include "collision.h"
+#include "ScoreManager.h"
 
 CBlockManager::CBlockManager()
 {
@@ -79,6 +80,9 @@ bool CBlockManager::CollisionBlock(const D3DXVECTOR3& pos, const D3DXVECTOR2& si
 			// 反射は位置を加味して
 			pMove->x = outMove.x;
 			pMove->y = outMove.y;
+
+			// スコアを加算する
+			CScoreManager::GetInstance()->AddScore(100);
 
 			// ブロックは削除
 			pBlock->Uninit();

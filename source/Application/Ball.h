@@ -19,7 +19,7 @@ public:
 	void SetPlayerID(int id) { m_PlayerID = id; }
 
 private:
-	static const int MOVE_POWER = 10;
+	static const int MOVE_POWER = 5;
 	D3DXVECTOR3 m_move;
 
 	int m_PlayerID;
