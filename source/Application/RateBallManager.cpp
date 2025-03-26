@@ -76,6 +76,8 @@ void CRateBallManager::Update()
 		else
 		{
 			CApplication::GetInstance()->GetSound()->Stop(CSound::SE_DRUM);
+			CApplication::GetInstance()->GetSound()->Play(CSound::SE_CRAP);
+
 		}
 	}
 }

@@ -33,7 +33,7 @@ public:
 		SE_EXPLOSION,
 
 		SE_DRUM,	// ƒhƒ‰ƒ€ƒ[ƒ‹
-
+		SE_CRAP,
 		MAX,
 	};
 

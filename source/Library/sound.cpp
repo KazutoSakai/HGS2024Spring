@@ -26,6 +26,8 @@ CSound::CSound()
 	m_param[SOUND_LABEL::SE_HIT] = { "data/sample/sound/se/bounce000.wav", 0 };
 	m_param[SOUND_LABEL::SE_EXPLOSION] = { "data/sample/sound/se/explosion000.wav", 0 };
 	m_param[SOUND_LABEL::SE_DRUM] = { "data/sample/sound/se/drumroll.wav", 0 };
+	m_param[SOUND_LABEL::SE_CRAP] = { "data/sample/sound/se/crap1.wav", 0 };
+
 }
 
 /// <summary>
