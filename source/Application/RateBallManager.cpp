@@ -73,6 +73,10 @@ void CRateBallManager::Update()
 				m_RateBallList.erase(m_RateBallList.begin());
 			}
 		}
+		else
+		{
+			CApplication::GetInstance()->GetSound()->Stop(CSound::SE_DRUM);
+		}
 	}
 }
 
