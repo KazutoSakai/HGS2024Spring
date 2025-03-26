@@ -38,7 +38,8 @@ CSceneManager::~CSceneManager()
 /// <returns></returns>
 HRESULT CSceneManager::Init()
 {
-	SceneType defaultType = SceneType::Title;
+	// デフォルトの画面
+	SceneType defaultType = SceneType::Game;
 
 	ChangeScene(defaultType, false);
 

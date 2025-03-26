@@ -55,7 +55,7 @@ private:
 
 	//---------------------
 	// static Member
-	static const DWORD RENDER_COL = 0xff006666;
+	static const DWORD RENDER_COL = 0xff000000;
 	static LPD3DXFONT m_pFont;			// フォントへのポインタ
 	static int m_debugTextPos;
 };

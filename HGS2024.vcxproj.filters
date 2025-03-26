@@ -82,6 +82,21 @@
     <Filter Include="Application\Effect">
       <UniqueIdentifier>{223dcf8d-dcd5-413a-910c-69da8bb3f420}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Application\Player">
+      <UniqueIdentifier>{13ed0c95-7b25-4003-a2e1-a62f7f1dc69f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Ball">
+      <UniqueIdentifier>{1a5fd9c0-7c47-4a63-9369-f5e4fa9fff82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\BlockManager">
+      <UniqueIdentifier>{33883ad9-25e0-4e75-9958-2f932d4041fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Library\Collision">
+      <UniqueIdentifier>{3d617d71-b27f-4972-abff-44b6c7990843}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Block">
+      <UniqueIdentifier>{7a25688a-6941-4907-a246-79c002ca642b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -146,6 +161,21 @@
     </ClCompile>
     <ClCompile Include="source\Application\effect.cpp">
       <Filter>Application\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\Player.cpp">
+      <Filter>Application\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\Ball.cpp">
+      <Filter>Application\Ball</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\BlockManager.cpp">
+      <Filter>Application\BlockManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Library\collision.cpp">
+      <Filter>Library\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\Block.cpp">
+      <Filter>Application\Block</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +244,21 @@
     </ClInclude>
     <ClInclude Include="source\Application\effect.h">
       <Filter>Application\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\Player.h">
+      <Filter>Application\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\Ball.h">
+      <Filter>Application\Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\BlockManager.h">
+      <Filter>Application\BlockManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Library\collision.h">
+      <Filter>Library\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\Block.h">
+      <Filter>Application\Block</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
