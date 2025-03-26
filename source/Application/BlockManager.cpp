@@ -18,7 +18,7 @@ CBlockManager::~CBlockManager()
 HRESULT CBlockManager::Init()
 {
 	// âºÇ≈ÉuÉçÉbÉNÇï¿Ç◊ÇÈ
-	float startPosX = CApplication::SCREEN_CENTER_X - (CBlock::BLOCK_SIZE_W * BLOCK_W / 2);
+	float startPosX = CApplication::SCREEN_CENTER_X - (CBlock::BLOCK_SIZE_W * BLOCK_W / 2) + CBlock::BLOCK_SIZE_W / 2;
 	float startPosY = SCREEN_HEIGHT / 5;
 	for (int x = 0; x < BLOCK_W; x++)
 	{
