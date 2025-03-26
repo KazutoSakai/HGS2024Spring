@@ -73,10 +73,7 @@ void CBall::Update()
 
 	// 移動
 	auto pos = GetPos();
-
 	pos += m_move * (1.0f + ((float)(m_NumRate-1) * 0.05f));
-
-	SetPos(pos);
 
 	// エフェクト処理
 	float rate = 0.0f;
@@ -208,7 +205,7 @@ void CBall::Update()
 					RateUp();
 
 					// プレイヤーを緑色に点滅
-					pl->SetColorState(CPlayer::ColorState::GREEN);
+					//pl->SetColorState(CPlayer::ColorState::GREEN);
 				}
 				else
 				{
@@ -226,12 +223,12 @@ void CBall::Update()
 				}
 
 				// 移動方向を変える
-				if (BVsPOut.x > 0)
+				if (BVsPOut.x >= 0)
 					m_move.x = MOVE_POWER;
 				else if (BVsPOut.x < 0)
 					m_move.x = -MOVE_POWER;
 
-				if (BVsPOut.y > 0)
+				if (BVsPOut.y >= 0)
 					m_move.y = MOVE_POWER;
 				else if (BVsPOut.y < 0)
 					m_move.y = -MOVE_POWER;
@@ -247,6 +244,9 @@ void CBall::Update()
 		isVsPlayerDoneCounter--;
 	}
 
+	pos += m_move * 0.01f;
+
+	SetPos(pos);
 
 	CObject2D::Update();
 }
@@ -271,7 +271,8 @@ void CBall::RateUp()
 	if (m_NumRate > RATE_MAX)
 	{
 		//CRateBallManager::GetInstance()->Regist(m_NumRate - 1);
-		m_NumRate = DEFAULT_RATE;
+		//m_NumRate = DEFAULT_RATE;
+		m_NumRate--;
 	}
 	auto pTex = CApplication::GetInstance()->GetTexture();
 	BindTexture(pTex->GetTexture(m_NumRateID[m_NumRate - 1]));
