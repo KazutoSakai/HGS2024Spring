@@ -210,6 +210,9 @@
     <ClCompile Include="source\Application\RateBallManager.cpp">
       <Filter>Application\RateBallUI</Filter>
     </ClCompile>
+    <ClCompile Include="source\Application\BestScore.cpp">
+      <Filter>Application\ScoreManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\main.h">
@@ -307,6 +310,9 @@
     </ClInclude>
     <ClInclude Include="source\Application\RateBallManager.h">
       <Filter>Application\RateBallUI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\BestScore.h">
+      <Filter>Application\ScoreManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

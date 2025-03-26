@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClCompile Include="source\Application\application.cpp" />
     <ClCompile Include="source\Application\Ball.cpp" />
+    <ClCompile Include="source\Application\BestScore.cpp" />
     <ClCompile Include="source\Application\Block.cpp" />
     <ClCompile Include="source\Application\BlockManager.cpp" />
     <ClCompile Include="source\Application\effect.cpp" />
@@ -181,6 +182,7 @@
   <ItemGroup>
     <ClInclude Include="source\Application\application.h" />
     <ClInclude Include="source\Application\Ball.h" />
+    <ClInclude Include="source\Application\BestScore.h" />
     <ClInclude Include="source\Application\Block.h" />
     <ClInclude Include="source\Application\BlockManager.h" />
     <ClInclude Include="source\Application\effect.h" />

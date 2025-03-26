@@ -30,6 +30,8 @@ public:
 	void ResultScore();
 	void LatestScore();
 
+	int GetScore() { return m_score; }
+
 private:
 	static const int SCORE_NUM = 8;
 
