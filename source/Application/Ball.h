@@ -12,6 +12,7 @@ public:
 	HRESULT Init() override;
 	void Uninit();
 	void Update();
+	void CollisionUpdate();
 	void Draw();
 
 	static CBall* Create();
@@ -23,6 +24,8 @@ private:
 	D3DXVECTOR3 m_move;
 
 	int m_PlayerID;
+
+	int isVsPlayerDoneCounter = 0;		// 前回のフレームでプレイヤーと当たり判定したか
 
 };
 

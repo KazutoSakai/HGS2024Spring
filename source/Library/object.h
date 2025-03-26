@@ -20,7 +20,7 @@ public:
 
 	//---------------------
 	// ’è”
-	static const int MAX_OBJ = 256;
+	static const int MAX_OBJ = 128;
 
 	//---------------------
 	// enum

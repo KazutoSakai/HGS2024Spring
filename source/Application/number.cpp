@@ -35,7 +35,7 @@ HRESULT CNumber::Init()
 
 	// テクスチャ
 	auto pTex = CApplication::GetInstance()->GetTexture();
-	int id = pTex->LoadTexture("data/sample/texture/number002.png");
+	int id = pTex->LoadTexture("data/sample/texture/number003.png");
 	CObject2D::BindTexture(pTex->GetTexture(id));
 
 	return S_OK;

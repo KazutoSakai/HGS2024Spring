@@ -8,7 +8,7 @@
 
 CBall::CBall()
 {
-
+	isVsPlayerDoneCounter = false;
 }
 
 HRESULT CBall::Init()
@@ -42,10 +42,20 @@ void CBall::Update()
 
 	pos += m_move;
 
+	SetPos(pos);
+
+	// ìñÇΩÇËîªíË
+	CollisionUpdate();
+
+	CObject2D::Update();
+}
+
+void CBall::CollisionUpdate()
+{
 	// êßå¿
-	D3DXVECTOR2 center = D3DXVECTOR2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-	const int wHalf = CApplication::SCREEN_GAME_WIDTH / 2;
-	if (pos.x >= center.x + wHalf || pos.x <= center.x - wHalf)
+	const auto& pos = GetPos();
+
+	if (pos.x >= SCREEN_WIDTH - CApplication::SCREEN_SIDE_WIDTH || pos.x <= CApplication::SCREEN_SIDE_WIDTH)
 		m_move.x *= -1.0f;
 	else if (pos.y <= 0.0f || pos.y >= SCREEN_HEIGHT)
 		m_move.y *= -1.0f;
@@ -77,6 +87,7 @@ void CBall::Update()
 	}
 
 	// ÉvÉåÉCÉÑÅ[Ç∆ÇÃìñÇΩÇËîªíË
+	if(isVsPlayerDoneCounter == 0)
 	{
 		auto pl = static_cast<CPlayer*>(GetObj(CObject::Priority::Default, m_PlayerID));
 		if (pl != nullptr)
@@ -107,13 +118,15 @@ void CBall::Update()
 					m_move.y = MOVE_POWER;
 				else if (BVsPOut.y < 0)
 					m_move.y = -MOVE_POWER;
+
+				isVsPlayerDoneCounter = 10;
 			}
 		}
 	}
-
-	SetPos(pos);
-
-	CObject2D::Update();
+	else if (isVsPlayerDoneCounter > 0)
+	{
+		isVsPlayerDoneCounter--;
+	}
 }
 
 void CBall::Draw()

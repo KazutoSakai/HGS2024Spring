@@ -7,7 +7,8 @@
 
 CBlockManager::CBlockManager()
 {
-	
+	for (int i = 0; i < BLOCK_W * BLOCK_H; i++)
+		m_pBlockList[i] = nullptr;
 }
 
 CBlockManager::~CBlockManager()
@@ -26,6 +27,7 @@ HRESULT CBlockManager::Init()
 		{
 			auto pBlock = CBlock::Create();
 			pBlock->SetPos(D3DXVECTOR3(startPosX + CBlock::BLOCK_SIZE_W * x, startPosY + CBlock::BLOCK_SIZE_H * y, 0));
+			pBlock->SetColor(D3DCOLOR_ARGB(255,0,255,255));
 			m_pBlockList[y*BLOCK_W + x] = pBlock;
 		}
 	}

@@ -27,9 +27,9 @@
 /// <returns></returns>
 HRESULT CSceneGame::Init()
 {
+	auto ball = CBall::Create();
 	auto player = CPlayer::Create();
 
-	auto ball = CBall::Create();
 	ball->SetPlayerID(player->GetId());
 	ball->SetPos(D3DXVECTOR3(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, 0.0f));
 

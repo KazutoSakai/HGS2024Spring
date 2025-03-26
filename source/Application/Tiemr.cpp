@@ -19,7 +19,7 @@ HRESULT CTimer::Init()
 {
 	// åªç›ÇÃÉXÉRÉA
 	const float sizeX = 56;
-	float startX = CApplication::SCREEN_SIDE_WIDTH - sizeX*TIME_NUM;
+	float startX = CApplication::SCREEN_SIDE_WIDTH - sizeX*TIME_NUM - sizeX;
 	const float startY = 0;
 
 	for (int x = 0; x < TIME_NUM; x++)
