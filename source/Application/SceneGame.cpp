@@ -25,9 +25,11 @@
 
 #include "BestScore.h"
 
-CSceneGame::CSceneGame() : m_pPlayer(nullptr), m_pTimer(nullptr), m_pSideL(nullptr), m_pSideR(nullptr), m_pDarkPolygon(nullptr)
+CSceneGame::CSceneGame() : m_pPlayer(nullptr), m_pTimer(nullptr), m_pSideL(nullptr), m_pSideR(nullptr), m_pDarkPolygon(nullptr), m_pBall(nullptr), m_pBestScore(nullptr)
 {
 	m_Life = 0;
+
+	m_GameState = GameState::Wait;
 }
 
 /// <summary>
@@ -36,10 +38,7 @@ CSceneGame::CSceneGame() : m_pPlayer(nullptr), m_pTimer(nullptr), m_pSideL(nullp
 /// <returns></returns>
 HRESULT CSceneGame::Init()
 {
-	auto ball = CBall::Create();
 	m_pPlayer = CPlayer::Create();
-
-	ball->SetPlayerID(m_pPlayer->GetId());
 
 	CBlockManager::GetInstance()->Init();
 
@@ -76,6 +75,9 @@ HRESULT CSceneGame::Init()
 	// 倍率たま
 	CRateBallManager::GetInstance()->Init();
 
+	// ゲーム状態
+	m_GameState = GameState::Wait;
+
 	return S_OK;
 }
 
@@ -94,20 +96,54 @@ void CSceneGame::Uninit()
 /// </summary>
 void CSceneGame::Update()
 {
-	// スコア
-	CScoreManager::GetInstance()->Update();
-
-	// 倍率たま
-	CRateBallManager::GetInstance()->Update();
-
 	auto pInput = CApplication::GetInstance()->GetInput();
-	// リザルト
-	if (m_Life <= 0)
+
+	//------------------------------------
+	// 待機状態
+	if (m_GameState == GameState::Wait)
 	{
+		if (m_pTimer != nullptr)
+			m_pTimer->StopTimer();
+
+		if (pInput->GetTrigger(CInputManager::InputType::Decide_A))
+		{
+			auto ball = CBall::Create();
+			ball->SetPlayerID(m_pPlayer->GetId());
+
+			// ゲーム状態へ
+			m_GameState = GameState::Game;
+
+			if (m_pTimer != nullptr)
+				m_pTimer->RestartTimer();
+
+			return;
+		}
+	}
+	//------------------------------------
+	// ゲーム中
+	else if (m_GameState == GameState::Game)
+	{
+		// スコア
+		CScoreManager::GetInstance()->Update();
+
+		// 倍率たま
+		CRateBallManager::GetInstance()->Update();
+
+	}
+	//------------------------------------
+	// リザルト画面
+	else if (m_GameState == GameState::Result)
+	{
+		// スコア
+		CScoreManager::GetInstance()->Update();
+
+		// 倍率たま
+		CRateBallManager::GetInstance()->Update();
+
 		if (pInput->GetTrigger(CInputManager::InputType::Decide_A))
 		{
 			// ベストスコアを保存
-			if(m_pBestScore != nullptr)
+			if (m_pBestScore != nullptr)
 				m_pBestScore->SaveBestScore();
 
 			CApplication::GetInstance()->GetScene()->ChangeScene(CSceneManager::SceneType::Game, true);
@@ -131,10 +167,11 @@ void CSceneGame::Draw()
 	
 }
 
-void CSceneGame::Resporn()
+void CSceneGame::Resporn(bool isSubLife)
 {
 	// 残機を減らす
-	m_Life--;
+	if(isSubLife == true)
+		m_Life--;
 
 	if (m_Life <= 0)
 	{
@@ -147,8 +184,8 @@ void CSceneGame::Resporn()
 	CBlockManager::GetInstance()->ReleaseBlock();
 	CBlockManager::GetInstance()->Init();
 
-	auto ball = CBall::Create();
-	ball->SetPlayerID(m_pPlayer->GetId());
+	// 待機状態へ
+	m_GameState = GameState::Wait;
 }
 
 void CSceneGame::GameEnd()
@@ -167,6 +204,9 @@ void CSceneGame::GameEnd()
 	}
 
 	CScoreManager::GetInstance()->ResultScore();
+
+	// リザルト状態へ
+	m_GameState = GameState::Result;
 
 	CRateBallManager::GetInstance()->ResultRateFlag(true);
 }

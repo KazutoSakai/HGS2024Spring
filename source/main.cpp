@@ -30,7 +30,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance,
 	_In_ LPSTR lpCmdLine,
 	_In_ int nCmdShow)
 {
-	//_CrtSetBreakAlloc(1061);
+	//_CrtSetBreakAlloc(221);
 
 	WNDCLASSEX wcex =
 	{

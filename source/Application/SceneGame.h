@@ -39,7 +39,7 @@ public:
 	// static Method
 	//static CSceneGame* Create();
 
-	void Resporn();
+	void Resporn(bool isSubLife);
 	void GameEnd();
 	void RestartGame();
 
@@ -49,6 +49,15 @@ public:
 private:
 
 	static const int LIFE_MAX = 3;
+
+	enum class GameState
+	{
+		Wait,
+		Game,
+		Result,
+	};
+
+	GameState m_GameState;
 
 	CPlayer* m_pPlayer;
 	CBall* m_pBall;

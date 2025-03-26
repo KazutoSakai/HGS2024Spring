@@ -56,7 +56,6 @@ void CTimer::Update()
 	if (m_flgTimeRun)
 	{
 		m_time -= GetWorldDeltaSeconds();
-		SetTime((int)m_time);
 
 		// §ŒÀŠÔ‚ÅI—¹
 		if ((int)m_time <= 0)
@@ -69,6 +68,8 @@ void CTimer::Update()
 			}
 		}
 	}
+
+	SetTime((int)(m_time+0.5f));
 }
 
 void CTimer::Draw()

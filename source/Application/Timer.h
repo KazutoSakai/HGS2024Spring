@@ -17,6 +17,7 @@ public:
 	static CTimer* Create();
 
 	void StopTimer() { m_flgTimeRun = false; };
+	void RestartTimer() { m_flgTimeRun = true; }
 
 private:
 	static const int TIME_NUM = 3;
