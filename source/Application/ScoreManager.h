@@ -31,6 +31,7 @@ public:
 	void LatestScore();
 
 	int GetScore() { return m_score; }
+	int GetDestScore() { return m_destScore; }
 
 private:
 	static const int SCORE_NUM = 8;

@@ -57,22 +57,21 @@ void CRateBallManager::Update()
 	// リザルトのフラグたったら
 	if (b_ResultFlag)
 	{
-		for (auto it = m_RateBallList.begin(); it != m_RateBallList.end(); it++)
+		if (m_RateBallList.size() >= 1)
 		{
-			D3DXVECTOR2 RateScale = it->m_pRateBall->GetSize();
+			auto ListTop = m_RateBallList.begin();
+			D3DXVECTOR2 RateScale = ListTop->m_pRateBall->GetSize();
 
 			if (RateScale.x >= 0.0f)
 			{
-				it->m_pRateBall->SetSize(D3DXVECTOR2(RateScale.x - 1.0f, RateScale.y - 1.0f));
-				break;
+				ListTop->m_pRateBall->SetSize(D3DXVECTOR2(RateScale.x - 1.0f, RateScale.y - 1.0f));
 			}
 			else if (RateScale.x < 0.0f)
 			{
-				it->m_pRateBall->SetDrawFlg(false);
+				CScoreManager::GetInstance()->AddScore(100 * ListTop->rate);
 
-				CScoreManager::GetInstance()->SetDestScore()
+				m_RateBallList.erase(m_RateBallList.begin());
 			}
-
 		}
 	}
 }

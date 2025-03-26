@@ -38,6 +38,8 @@ HRESULT CScoreManager::Init()
 	m_score = 0;
 	m_destScore = 0;
 
+	
+
 	return S_OK;
 }
 
@@ -53,11 +55,28 @@ void CScoreManager::Uninit()
 void CScoreManager::Update()
 {
 	// 目標スコアまで加算する
-	if (m_score < m_destScore)
+	if (m_score + 1000000 < m_destScore)
+	{
+		m_score += 111111;
+		SetScore(m_score);
+	}
+	else if (m_score + 100000 < m_destScore)
+	{
+		m_score += 11111;
+		SetScore(m_score);
+	}
+	else if (m_score + 10000 < m_destScore)
+	{
+		m_score += 1111;
+		SetScore(m_score);
+	}
+	else if (m_score < m_destScore)
 	{
 		m_score++;
 		SetScore(m_score);
 	}
+
+	
 }
 
 void CScoreManager::Draw()
@@ -89,6 +108,27 @@ void CScoreManager::SetScore(int score)
 		tmpScore /= 10;
 
 		pNum->SetNumber(num);
+	}
+
+	// スコアが一定の数値になると色を変える
+	if (m_score > 50000)
+	{
+		auto pTex = CApplication::GetInstance()->GetTexture();
+		int texID = pTex->LoadTexture("data/sample/texture/number003.png");;
+
+		if (m_score > 80000)
+		{
+			texID = pTex->LoadTexture("data/sample/texture/number005.png");
+		}
+		else
+		{
+			texID = pTex->LoadTexture("data/sample/texture/number004.png");
+		}
+
+		for (int nCount = 0; nCount < SCORE_NUM; nCount++)
+		{
+			m_pNumberList[nCount]->BindTexture(pTex->GetTexture(texID));
+		}
 	}
 }
 
