@@ -197,9 +197,13 @@ void CBall::Update()
 				m_pBallSound->Play(CSound::SE_SHOT);
 
 				// ‹——£‚ðŽæ“¾
-				D3DXVECTOR3 vec = pos - pPos;
+				D3DXVECTOR3 lenpPos = pPos;
+				D3DXVECTOR3 lenbPos = pos;
+				lenpPos.y = 0;
+				lenbPos.y = 0;
+				D3DXVECTOR3 vec = lenbPos - lenpPos;
 				float length = D3DXVec3Length(&vec);
-				if (length >= 60.0f)
+				if (length >= 50.0f)
 				{
 					// ”{—¦Œp‘±
 					RateUp();
