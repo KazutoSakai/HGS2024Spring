@@ -10,6 +10,7 @@
 
 #include "object2D.h"
 #include "texture.h"
+#include "effect.h"
 
 #include "objectX.h"
 
@@ -28,7 +29,7 @@ HRESULT CSceneGame::Init()
 	// サンプルコード
 
 	// ポリゴン生成　※継承でも利用可能。CObjectクラスに登録。
-	obj2D = CObject2D::Create(CObject::Priority::UI);
+	obj2D = CObject2D::Create(CObject::Priority::Character);
 	// 位置設定。基準点は中心がデフォ。
 	obj2D->SetPos(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, 0.0f));
 	// (x, y) = (横、縦)
@@ -72,6 +73,10 @@ void CSceneGame::Update()
 		if (pInput->GetPress(CInputManager::InputType::Move_Right))
 			pos.x += 2.0f;
 		obj2D->SetPos(pos);
+
+		// エフェクト（コンストラクタで描画順を設定している）
+		auto pEffect = CEffect::Create(pos, D3DCOLOR_ARGB(255, 255, 255, 255), 10);
+		pEffect->SetSize(D3DXVECTOR2(100.0f, 100.0f));
 	}
 
 	{

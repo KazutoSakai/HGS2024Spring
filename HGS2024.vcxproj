@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\Application\application.cpp" />
+    <ClCompile Include="source\Application\effect.cpp" />
     <ClCompile Include="source\Application\SceneGame.cpp" />
     <ClCompile Include="source\Application\SceneManager.cpp" />
     <ClCompile Include="source\Application\SceneRanking.cpp" />
@@ -169,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Application\application.h" />
+    <ClInclude Include="source\Application\effect.h" />
     <ClInclude Include="source\Application\SceneBase.h" />
     <ClInclude Include="source\Application\SceneGame.h" />
     <ClInclude Include="source\Application\SceneManager.h" />
