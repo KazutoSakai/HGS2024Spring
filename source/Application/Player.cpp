@@ -2,6 +2,8 @@
 #include "Player.h"
 #include "application.h"
 
+#include "SceneGame.h"
+
 CPlayer::CPlayer()
 {
 
@@ -26,6 +28,13 @@ void CPlayer::Uninit()
 
 void CPlayer::Update()
 {
+	// ƒŠƒUƒ‹ƒg’†‚Í”ò‚Î‚·
+	auto game = static_cast<CSceneGame*>(CApplication::GetInstance()->GetScene()->GetCurrentScene());
+	if (game->IsGameRun() == false)
+	{
+		return;
+	}
+
 	auto pInput = CApplication::GetInstance()->GetInput();
 
 	auto pos = GetPos();

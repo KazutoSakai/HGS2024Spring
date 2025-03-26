@@ -16,6 +16,7 @@ class CPlayer;
 class CTimer;
 class CSideUI;
 class CObject2D;
+class CBall;
 
 /// <summary>
 /// ゲームメイン画面管理
@@ -41,11 +42,15 @@ public:
 	void GameEnd();
 	void RestartGame();
 
+	// ゲーム実行中（リザルトは除く）
+	bool IsGameRun() { return m_Life > 0; }
+
 private:
 
 	static const int LIFE_MAX = 3;
 
 	CPlayer* m_pPlayer;
+	CBall* m_pBall;
 
 	int m_Life;
 

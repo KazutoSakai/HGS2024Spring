@@ -18,7 +18,6 @@ public:
 
 private:
 	static const int MOVE_POWER = 8;
-
 };
 
 #endif

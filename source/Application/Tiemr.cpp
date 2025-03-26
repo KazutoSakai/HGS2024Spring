@@ -1,6 +1,7 @@
 
 #include "Timer.h"
 #include "application.h"
+#include "SceneGame.h"
 
 CTimer::CTimer()
 {
@@ -55,8 +56,18 @@ void CTimer::Update()
 	if (m_flgTimeRun)
 	{
 		m_time -= GetWorldDeltaSeconds();
-
 		SetTime((int)m_time);
+
+		// êßå¿éûä‘Ç≈èIóπ
+		if ((int)m_time <= 0)
+		{
+			auto game = static_cast<CSceneGame*>(CApplication::GetInstance()->GetScene()->GetCurrentScene());
+			if (game != nullptr)
+			{
+				game->GameEnd();
+				return;
+			}
+		}
 	}
 }
 

@@ -84,9 +84,6 @@ HRESULT CApplication::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 /// </summary>
 void CApplication::Uninit()
 {
-	// ‘S‰ð•ú
-	CObject::ReleaseAll();
-
 	// Žè“®‰ð•ú
 	if (m_pView != nullptr)
 		m_pView->Uninit();
@@ -137,6 +134,9 @@ void CApplication::Uninit()
 		delete m_pSceneManager;
 		m_pSceneManager = nullptr;
 	}
+
+	// ‘S‰ð•ú
+	CObject::ReleaseAll();
 }
 
 /// <summary>

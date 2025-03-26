@@ -62,6 +62,13 @@ void CBall::Uninit()
 
 void CBall::Update()
 {
+	// ƒŠƒUƒ‹ƒg’†‚Í”ò‚Î‚·
+	auto game = static_cast<CSceneGame*>(CApplication::GetInstance()->GetScene()->GetCurrentScene());
+	if (game->IsGameRun() == false)
+	{
+		return;
+	}
+
 	// ˆÚ“®
 	auto pos = GetPos();
 

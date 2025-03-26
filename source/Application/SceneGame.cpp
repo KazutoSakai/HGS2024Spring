@@ -93,7 +93,9 @@ HRESULT CSceneGame::Init()
 /// </summary>
 void CSceneGame::Uninit()
 {
-
+	CBlockManager::GetInstance()->ReleaseBlock();
+	CScoreManager::GetInstance()->Uninit();
+	CRateBallManager::GetInstance()->Uninit();
 }
 
 /// <summary>
@@ -108,11 +110,12 @@ void CSceneGame::Update()
 	CRateBallManager::GetInstance()->Update();
 
 	auto pInput = CApplication::GetInstance()->GetInput();
+	// リザルト
 	if (m_Life <= 0)
 	{
 		if (pInput->GetTrigger(CInputManager::InputType::Decide_A))
 		{
-			RestartGame();
+			CApplication::GetInstance()->GetScene()->ChangeScene(CSceneManager::SceneType::Game, true);
 			return;
 		}
 	}
@@ -155,6 +158,9 @@ void CSceneGame::Resporn()
 
 void CSceneGame::GameEnd()
 {
+	// ライフをゼロにする
+	m_Life = 0;
+
 	// 薄暗いポリゴン
 	if(m_pDarkPolygon != nullptr)
 		m_pDarkPolygon->SetDrawFlg(true);
