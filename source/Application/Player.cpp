@@ -18,6 +18,9 @@ HRESULT CPlayer::Init()
 	// (x, y) = (‰¡Ac)
 	SetSize(D3DXVECTOR2(160, 32));
 
+	m_ColorState = ColorState::DEFAULT;
+	m_ColorTimer = 0.0f;
+
 	return S_OK;
 }
 
@@ -57,6 +60,31 @@ void CPlayer::Update()
 
 	SetPos(pos);
 
+	// F‚Ìˆ—
+	switch (m_ColorState)
+	{
+	case CPlayer::ColorState::DEFAULT:
+		SetColor(D3DCOLOR_ARGB(255,255,255,255));
+		break;
+	case CPlayer::ColorState::GREEN:
+		SetColor(D3DCOLOR_ARGB(255, 0, 255, 0));
+		m_ColorTimer += GetWorldDeltaSeconds();
+		if (m_ColorTimer >= 0.5f)
+		{
+			m_ColorState = ColorState::DEFAULT;
+		}
+		break;
+	case CPlayer::ColorState::RED:
+		SetColor(D3DCOLOR_ARGB(255, 255, 0, 0));
+		m_ColorTimer += GetWorldDeltaSeconds();
+		if (m_ColorTimer >= 0.5f)
+		{
+			m_ColorState = ColorState::DEFAULT;
+		}
+		break;
+	default:
+		break;
+	}
 
 	
 	CObject2D::Update();
@@ -74,4 +102,10 @@ CPlayer* CPlayer::Create()
 	p->Init();
 
 	return p;
+}
+
+void CPlayer::SetColorState(ColorState state)
+{
+	m_ColorState = state;
+	m_ColorTimer = 0.0f;
 }

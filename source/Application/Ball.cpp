@@ -10,6 +10,8 @@
 #include "ScoreManager.h"
 #include "RateBallManager.h"
 
+#include "effect.h"
+
 CBall::CBall()
 {
 	m_move = D3DXVECTOR3(0, 0, 0);
@@ -72,9 +74,14 @@ void CBall::Update()
 	// 移動
 	auto pos = GetPos();
 
-	pos += m_move;
+	pos += m_move * (1.0f + ((float)(m_NumRate-1) * 0.05f));
 
 	SetPos(pos);
+
+	// エフェクト処理
+	float rate = 0.0f;
+	rate = (float)m_NumRate / (float)RATE_MAX;
+	auto pEffect = CEffect::Create(pos, D3DCOLOR_ARGB((int)(rate*255), 255, (int)(rate*255), 255), 5);
 
 	//-----------------------------------
 	// 当たり判定
@@ -139,14 +146,7 @@ void CBall::Update()
 			}
 
 			// 倍率を上げてテクスチャ設定（1～9なので-1してます）
-			m_NumRate++;
-			if (m_NumRate >= RATE_MAX)
-			{
-				CRateBallManager::GetInstance()->Regist(m_NumRate);
-				m_NumRate = DEFAULT_RATE;
-			}
-			auto pTex = CApplication::GetInstance()->GetTexture();
-			BindTexture(pTex->GetTexture(m_NumRateID[m_NumRate - 1]));
+			RateUp();
 
 			// 移動方向を変える
 			if (outDir.x > 0)
@@ -199,15 +199,31 @@ void CBall::Update()
 				// サウンド再生
 				m_pBallSound->Play(CSound::SE_SHOT);
 
-				// 倍率があがっていたらを登録して戻す
-				if (m_NumRate > DEFAULT_RATE)
+				// 距離を取得
+				D3DXVECTOR3 vec = pos - pPos;
+				float length = D3DXVec3Length(&vec);
+				if (length >= 60.0f)
 				{
-					CRateBallManager::GetInstance()->Regist(m_NumRate);
-					m_NumRate = DEFAULT_RATE;
+					// 倍率継続
+					RateUp();
+
+					// プレイヤーを緑色に点滅
+					pl->SetColorState(CPlayer::ColorState::GREEN);
 				}
-				m_NumRate = DEFAULT_RATE;
-				auto pTex = CApplication::GetInstance()->GetTexture();
-				BindTexture(pTex->GetTexture(m_NumRateID[m_NumRate - 1]));
+				else
+				{
+					// 倍率があがっていたらを登録して戻す
+					if (m_NumRate > DEFAULT_RATE)
+					{
+						CRateBallManager::GetInstance()->Regist(m_NumRate);
+						m_NumRate = DEFAULT_RATE;
+						auto pTex = CApplication::GetInstance()->GetTexture();
+						BindTexture(pTex->GetTexture(m_NumRateID[m_NumRate - 1]));
+					}
+
+					// プレイヤーを青色に点滅
+					pl->SetColorState(CPlayer::ColorState::RED);
+				}
 
 				// 移動方向を変える
 				if (BVsPOut.x > 0)
@@ -247,4 +263,16 @@ CBall* CBall::Create()
 	p->Init();
 
 	return p;
+}
+
+void CBall::RateUp()
+{
+	m_NumRate++;
+	if (m_NumRate > RATE_MAX)
+	{
+		//CRateBallManager::GetInstance()->Regist(m_NumRate - 1);
+		m_NumRate = DEFAULT_RATE;
+	}
+	auto pTex = CApplication::GetInstance()->GetTexture();
+	BindTexture(pTex->GetTexture(m_NumRateID[m_NumRate - 1]));
 }
