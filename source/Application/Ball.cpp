@@ -168,7 +168,12 @@ void CBall::Update()
 				// ƒTƒEƒ“ƒhÄ¶
 				m_pBallSound->Play(CSound::SE_SHOT);
 
-				// ”{—¦‚ð–ß‚·
+				// ”{—¦‚ª‚ ‚ª‚Á‚Ä‚¢‚½‚ç‚ð“o˜^‚µ‚Ä–ß‚·
+				if (m_NumRate > DEFAULT_RATE)
+				{
+					CRateBallManager::GetInstance()->Regist(m_NumRate);
+					m_NumRate = DEFAULT_RATE;
+				}
 				m_NumRate = DEFAULT_RATE;
 				auto pTex = CApplication::GetInstance()->GetTexture();
 				BindTexture(pTex->GetTexture(m_NumRateID[m_NumRate - 1]));

@@ -2,6 +2,7 @@
 #define _RATEBALLMANAGER_H_
 
 #include "Object2D.h"
+#include <vector>
 
 class CRateBallManager
 {
@@ -27,15 +28,22 @@ public:
 	void Regist(int rate);
 
 private:
-	static const int SCORE_NUM = 8;
 
 	//---------------------
 	// default
 	CRateBallManager();					// コンストラクタ
 	~CRateBallManager();					// デストラクタ
 
-	CObject2D* m_pRateBallList[SCORE_NUM];
+	static const int RATEBALL_SIZE = 32;
 
+	struct RateBallInfo
+	{
+		int texId;
+		int rate;
+		CObject2D* m_pRateBall;
+	};
+
+	std::vector<RateBallInfo> m_RateBallList;
 };
 
 #endif
