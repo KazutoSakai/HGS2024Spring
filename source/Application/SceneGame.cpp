@@ -132,6 +132,7 @@ void CSceneGame::Resporn()
 
 	if (m_Life <= 0)
 	{
+		CScoreManager::GetInstance()->LatestScore();
 		GameEnd();
 		return;
 	}
@@ -155,6 +156,8 @@ void CSceneGame::GameEnd()
 	{
 		m_pTimer->StopTimer();
 	}
+
+	CScoreManager::GetInstance()->ResultScore();
 }
 
 void CSceneGame::RestartGame()

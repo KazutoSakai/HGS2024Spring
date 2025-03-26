@@ -4,6 +4,7 @@
 
 #include "collision.h"
 
+
 CScoreManager::CScoreManager()
 {
 	for (int i = 0; i < SCORE_NUM; i++)
@@ -57,7 +58,6 @@ void CScoreManager::Update()
 		m_score++;
 		SetScore(m_score);
 	}
-
 }
 
 void CScoreManager::Draw()
@@ -90,4 +90,30 @@ void CScoreManager::SetScore(int score)
 
 		pNum->SetNumber(num);
 	}
+}
+
+void CScoreManager::ResultScore()
+{
+
+	// 現在のスコア
+	float startX = CApplication::SCREEN_SIDE_WIDTH;
+	const float startY = 100;
+	const float sizeX = 102;
+
+	for (int x = 0; x < SCORE_NUM; x++)
+	{
+		auto pNum = CNumber::Create(D3DXVECTOR3(startX + x * sizeX, startY, 0));
+		pNum->SetPosType(CObject2D::POSTYPE::LeftTop);
+		pNum->SetSize(D3DXVECTOR2(sizeX, 204));
+		pNum->SetNumber(0);
+		m_pNumberList[SCORE_NUM - 1 - x] = pNum;
+	}
+
+	LatestScore();
+}
+
+void CScoreManager::LatestScore()
+{
+	// スコアを現状の点数に即座に更新
+	SetScore(m_destScore);
 }

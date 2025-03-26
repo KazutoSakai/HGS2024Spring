@@ -27,6 +27,9 @@ public:
 	void SetScore(int score);
 	void SetDestScore(int dest) { m_destScore = dest; }
 
+	void ResultScore();
+	void LatestScore();
+
 private:
 	static const int SCORE_NUM = 8;
 
