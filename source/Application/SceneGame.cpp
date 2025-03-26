@@ -209,6 +209,8 @@ void CSceneGame::GameEnd()
 	m_GameState = GameState::Result;
 
 	CRateBallManager::GetInstance()->ResultRateFlag(true);
+
+	CApplication::GetInstance()->GetSound()->Play(CSound::SE_DRUM);
 }
 
 void CSceneGame::RestartGame()

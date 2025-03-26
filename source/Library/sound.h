@@ -32,6 +32,8 @@ public:
 		SE_HIT,
 		SE_EXPLOSION,
 
+		SE_DRUM,	// ƒhƒ‰ƒ€ƒ[ƒ‹
+
 		MAX,
 	};
 
