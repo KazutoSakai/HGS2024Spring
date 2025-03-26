@@ -193,9 +193,6 @@ void CBall::Update()
 			// 当たった
 			if (CollisionSqVsCircleReflection(sq, cr, &BVsPOut))
 			{
-				// サウンド再生
-				m_pBallSound->Play(CSound::SE_SHOT);
-
 				// 距離を取得
 				D3DXVECTOR3 lenpPos = pPos;
 				D3DXVECTOR3 lenbPos = pos;
@@ -207,6 +204,9 @@ void CBall::Update()
 				{
 					// 倍率継続
 					RateUp();
+
+					// サウンド再生
+					m_pBallSound->Play(CSound::SE_HIT);
 
 					// プレイヤーを緑色に点滅
 					//pl->SetColorState(CPlayer::ColorState::GREEN);
@@ -220,10 +220,18 @@ void CBall::Update()
 						m_NumRate = DEFAULT_RATE;
 						auto pTex = CApplication::GetInstance()->GetTexture();
 						BindTexture(pTex->GetTexture(m_NumRateID[m_NumRate - 1]));
-					}
 
-					// プレイヤーを青色に点滅
-					pl->SetColorState(CPlayer::ColorState::RED);
+						// サウンド再生
+						m_pBallSound->Play(CSound::SE_SHOT);
+
+						// プレイヤーを青色に点滅
+						pl->SetColorState(CPlayer::ColorState::RED);
+					}
+					else
+					{
+						// サウンド再生
+						m_pBallSound->Play(CSound::SE_HIT);
+					}
 				}
 
 				// 移動方向を変える
