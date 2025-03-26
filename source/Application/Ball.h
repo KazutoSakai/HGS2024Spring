@@ -27,6 +27,12 @@ private:
 	CSound* m_pBallSound;					// ボール用のサウンド
 	int m_PlayerID;
 	int isVsPlayerDoneCounter = 0;		// 前回のフレームでプレイヤーと当たり判定したか
+
+	// 倍率
+	static const int RATE_MAX = 9;
+	static const int DEFAULT_RATE = 1;
+	int m_NumRate;				// 1～9
+	int m_NumRateID[RATE_MAX];
 };
 
 #endif

@@ -112,6 +112,9 @@
     <Filter Include="Application\UI\SideUI">
       <UniqueIdentifier>{114aba1c-e170-44fc-9991-434b47686b5b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Application\RateBallUI">
+      <UniqueIdentifier>{0b8f7b03-5fbf-4771-a430-05c5d75477f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -203,6 +206,9 @@
     </ClCompile>
     <ClCompile Include="source\Application\SideUI.cpp">
       <Filter>Application\UI\SideUI</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\RateBallManager.cpp">
+      <Filter>Application\RateBallUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -298,6 +304,9 @@
     </ClInclude>
     <ClInclude Include="source\Application\SideUI.h">
       <Filter>Application\UI\SideUI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\RateBallManager.h">
+      <Filter>Application\RateBallUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
