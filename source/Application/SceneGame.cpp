@@ -172,6 +172,8 @@ void CSceneGame::GameEnd()
 	}
 
 	CScoreManager::GetInstance()->ResultScore();
+
+	CRateBallManager::GetInstance()->ResultRateFlag(true);
 }
 
 void CSceneGame::RestartGame()

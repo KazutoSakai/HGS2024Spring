@@ -2,6 +2,8 @@
 #include "RateBallManager.h"
 #include "application.h"
 
+#include "ScoreManager.h"
+
 #include "collision.h"
 
 CRateBallManager::CRateBallManager()
@@ -16,6 +18,8 @@ CRateBallManager::~CRateBallManager()
 
 HRESULT CRateBallManager::Init()
 {
+	b_ResultFlag = false;
+
 	return S_OK;
 }
 
@@ -46,7 +50,30 @@ void CRateBallManager::Update()
 		}
 
 		it->m_pRateBall->SetPos(D3DXVECTOR3((float)(xPos), startY, 0));
+		it->m_pRateBall->SetDrawFlg(true);
 		counter++;
+	}
+
+	// リザルトのフラグたったら
+	if (b_ResultFlag)
+	{
+		for (auto it = m_RateBallList.begin(); it != m_RateBallList.end(); it++)
+		{
+			D3DXVECTOR2 RateScale = it->m_pRateBall->GetSize();
+
+			if (RateScale.x >= 0.0f)
+			{
+				it->m_pRateBall->SetSize(D3DXVECTOR2(RateScale.x - 1.0f, RateScale.y - 1.0f));
+				break;
+			}
+			else if (RateScale.x < 0.0f)
+			{
+				it->m_pRateBall->SetDrawFlg(false);
+
+				CScoreManager::GetInstance()->SetDestScore()
+			}
+
+		}
 	}
 }
 
@@ -104,6 +131,19 @@ void CRateBallManager::Regist(int rate)
 	info.m_pRateBall = CObject2D::Create(CObject::Priority::UI);
 	info.m_pRateBall->SetSize(D3DXVECTOR2(RATEBALL_SIZE, RATEBALL_SIZE));
 	info.m_pRateBall->BindTexture(pTex->GetTexture(info.texId));
+	info.m_pRateBall->SetDrawFlg(false);
 
 	m_RateBallList.push_back(info);
+
+
+}
+
+int CRateBallManager::ResultListCheck(int num)
+{
+	return m_RateBallList[num].rate;
+}
+
+void CRateBallManager::ResultRateFlag(bool flag)
+{
+	b_ResultFlag = flag;
 }

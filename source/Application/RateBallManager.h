@@ -27,6 +27,9 @@ public:
 
 	void Regist(int rate);
 
+	int ResultListCheck(int num);
+	void ResultRateFlag(bool flag);
+
 private:
 
 	//---------------------
@@ -44,6 +47,8 @@ private:
 	};
 
 	std::vector<RateBallInfo> m_RateBallList;
+
+	bool b_ResultFlag;
 };
 
 #endif
