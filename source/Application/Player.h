@@ -17,7 +17,7 @@ public:
 	static CPlayer* Create();
 
 private:
-	static const int MOVE_POWER = 5;
+	static const int MOVE_POWER = 8;
 
 };
 
