@@ -159,6 +159,8 @@
     <ClCompile Include="source\Application\SceneResult.cpp" />
     <ClCompile Include="source\Application\SceneTitle.cpp" />
     <ClCompile Include="source\Application\ScoreManager.cpp" />
+    <ClCompile Include="source\Application\SideUI.cpp" />
+    <ClCompile Include="source\Application\Tiemr.cpp" />
     <ClCompile Include="source\Library\collision.cpp" />
     <ClCompile Include="source\Library\input.cpp" />
     <ClCompile Include="source\Library\light.cpp" />
@@ -190,6 +192,8 @@
     <ClInclude Include="source\Application\SceneResult.h" />
     <ClInclude Include="source\Application\SceneTitle.h" />
     <ClInclude Include="source\Application\ScoreManager.h" />
+    <ClInclude Include="source\Application\SideUI.h" />
+    <ClInclude Include="source\Application\Timer.h" />
     <ClInclude Include="source\Library\collision.h" />
     <ClInclude Include="source\Library\input.h" />
     <ClInclude Include="source\Library\light.h" />

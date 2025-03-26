@@ -17,6 +17,10 @@
 #include "number.h"
 #include "ScoreManager.h"
 
+#include "Timer.h"
+
+#include "SideUI.h"
+
 /// <summary>
 /// 初期化
 /// </summary>
@@ -48,6 +52,13 @@ HRESULT CSceneGame::Init()
 	// 現在のスコア
 	CScoreManager::GetInstance()->Init();
 
+	// 時間
+	CTimer::Create();
+
+	// サイドの表示
+	CSideUI::Create(true);
+	CSideUI::Create(false);
+
 	return S_OK;
 }
 
@@ -67,11 +78,13 @@ void CSceneGame::Update()
 	// スコア
 	CScoreManager::GetInstance()->Update();
 
+#ifdef _DEBUG
 	auto pInput = CApplication::GetInstance()->GetInput();
 	if (pInput->GetPress(CInputManager::InputType::Move_Up))
 	{
 		CScoreManager::GetInstance()->AddScore(1);
 	}
+#endif
 }
 
 /// <summary>

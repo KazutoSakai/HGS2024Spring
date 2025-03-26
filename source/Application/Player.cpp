@@ -29,9 +29,11 @@ void CPlayer::Update()
 	auto pInput = CApplication::GetInstance()->GetInput();
 
 	auto pos = GetPos();
-	if (pInput->GetPress(CInputManager::InputType::Move_Left))
+	if (pInput->GetPress(CInputManager::InputType::Move_Left) || 
+		pInput->GetKeyboard()->GetPress(DIK_LEFT))
 		pos.x -= MOVE_POWER;
-	if (pInput->GetPress(CInputManager::InputType::Move_Right))
+	if (pInput->GetPress(CInputManager::InputType::Move_Right) ||
+		pInput->GetKeyboard()->GetPress(DIK_RIGHT))
 		pos.x += MOVE_POWER;
 	SetPos(pos);
 	

@@ -58,14 +58,28 @@ void CBall::Update()
 		D3DXVECTOR3 outDir = m_move;	// コピー
 		if (CBlockManager::GetInstance()->CollisionBlock(pos, GetSize(), &outDir))
 		{
-			// 仮処理（移動方向に対して中心から上下どちらで当たったかを考慮できていない）
-			if (outDir.x > 0 && m_move.x < 0 || outDir.x < 0 && m_move.x > 0)
-				m_move.x *= -1.0f;
-			if (outDir.y > 0 && m_move.y < 0 || outDir.y < 0 && m_move.y > 0)
-				m_move.y *= -1.0f;
+			if (outDir.x > 0)
+				m_move.x = MOVE_POWER;
+			else if (outDir.x < 0)
+				m_move.x = -MOVE_POWER;
 
-			// サウンド再生
-			m_pBallSound->Play(CSound::SE_HIT);
+			if (outDir.y > 0)
+			{
+				m_move.y = MOVE_POWER;
+				// サウンド再生
+				m_pBallSound->Play(CSound::SE_HIT);
+			}
+			else if (outDir.y < 0)
+			{
+				m_move.y = -MOVE_POWER;
+				// サウンド再生
+				m_pBallSound->Play(CSound::SE_HIT);
+			}
+			//// 仮処理（移動方向に対して中心から上下どちらで当たったかを考慮できていない）
+			//if (outDir.x > 0 && m_move.x < 0 || outDir.x < 0 && m_move.x > 0)
+			//	m_move.x *= -1.0f;
+			//if (outDir.y > 0 && m_move.y < 0 || outDir.y < 0 && m_move.y > 0)
+			//	m_move.y *= -1.0f;
 
 			// 法線（挙動がおかしい）
 			//m_move = outDir;
@@ -94,20 +108,26 @@ void CBall::Update()
 			D3DXVECTOR2 BVsPOut = D3DXVECTOR2(m_move.x, m_move.y);	// コピー
 			if (CollisionSqVsCircleReflection(sq, cr, &BVsPOut))
 			{
-				// 仮処理（移動方向に対して中心から上下どちらで当たったかを考慮できていない）
-				if (BVsPOut.x > 0 && m_move.x < 0 || BVsPOut.x < 0 && m_move.x > 0)
 				{
-					m_move.x *= -1.0f;
-
 					// サウンド再生
 					m_pBallSound->Play(CSound::SE_SHOT);
 				}
 				if (BVsPOut.y > 0 && m_move.y < 0 || BVsPOut.y < 0 && m_move.y > 0)
 				{
-					m_move.y *= -1.0f;
-
 					// サウンド再生
 					m_pBallSound->Play(CSound::SE_SHOT);
+				}
+				if (BVsPOut.x > 0)
+					m_move.x = MOVE_POWER;
+				else if (BVsPOut.x < 0)
+					m_move.x = -MOVE_POWER;
+
+				if (BVsPOut.y > 0)
+					m_move.y = MOVE_POWER;
+				else if (BVsPOut.y < 0)
+					m_move.y = -MOVE_POWER;
+
+					
 				}
 			}
 

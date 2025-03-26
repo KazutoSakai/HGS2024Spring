@@ -103,6 +103,15 @@
     <Filter Include="Application\ScoreManager">
       <UniqueIdentifier>{d0e26e4a-e1b7-46d2-8656-692baa5579e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Application\Timer">
+      <UniqueIdentifier>{ff9d468c-23dd-4930-8a58-b02bbf5ff7f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\UI">
+      <UniqueIdentifier>{3b251a8b-d94b-479f-9d3e-8a85dd9293cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\UI\SideUI">
+      <UniqueIdentifier>{114aba1c-e170-44fc-9991-434b47686b5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp">
@@ -188,6 +197,12 @@
     </ClCompile>
     <ClCompile Include="source\Application\ScoreManager.cpp">
       <Filter>Application\ScoreManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\Tiemr.cpp">
+      <Filter>Application\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Application\SideUI.cpp">
+      <Filter>Application\UI\SideUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +292,12 @@
     </ClInclude>
     <ClInclude Include="source\Application\ScoreManager.h">
       <Filter>Application\ScoreManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\Timer.h">
+      <Filter>Application\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Application\SideUI.h">
+      <Filter>Application\UI\SideUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
