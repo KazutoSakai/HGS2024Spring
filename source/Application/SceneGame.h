@@ -18,6 +18,7 @@ class CSideUI;
 class CObject2D;
 class CBall;
 class CBestScore;
+class CNumber;
 
 /// <summary>
 /// ƒQ[ƒ€ƒƒCƒ“‰æ–ÊŠÇ—
@@ -73,6 +74,7 @@ private:
 
 	CBestScore* m_pBestScore;
 
+	CNumber* m_pNumber;
 };
 
 #endif

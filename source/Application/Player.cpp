@@ -21,6 +21,11 @@ HRESULT CPlayer::Init()
 	m_ColorState = ColorState::DEFAULT;
 	m_ColorTimer = 0.0f;
 
+	// テクスチャ
+	auto pTex = CApplication::GetInstance()->GetTexture();
+	int id = pTex->LoadTexture("data/sample/texture/Player002.png");
+	BindTexture(pTex->GetTexture(id));
+
 	return S_OK;
 }
 

@@ -25,7 +25,7 @@
 
 #include "BestScore.h"
 
-CSceneGame::CSceneGame() : m_pPlayer(nullptr), m_pTimer(nullptr), m_pSideL(nullptr), m_pSideR(nullptr), m_pDarkPolygon(nullptr), m_pBall(nullptr), m_pBestScore(nullptr)
+CSceneGame::CSceneGame() : m_pPlayer(nullptr), m_pTimer(nullptr), m_pSideL(nullptr), m_pSideR(nullptr), m_pDarkPolygon(nullptr), m_pBall(nullptr), m_pBestScore(nullptr), m_pNumber(nullptr)
 {
 	m_Life = 0;
 
@@ -57,6 +57,9 @@ HRESULT CSceneGame::Init()
 
 	// 残機
 	m_Life = LIFE_MAX;
+	m_pNumber = CNumber::Create(D3DXVECTOR3(SCREEN_WIDTH - CApplication::SCREEN_SIDE_WIDTH / 2, SCREEN_HEIGHT/2, 0));
+	m_pNumber->SetSize(D3DXVECTOR2(128, 128));
+	m_pNumber->SetNumber(m_Life);
 
 	// うす暗いポリゴン
 	if (m_pDarkPolygon == nullptr)
@@ -170,8 +173,12 @@ void CSceneGame::Draw()
 void CSceneGame::Resporn(bool isSubLife)
 {
 	// 残機を減らす
-	if(isSubLife == true)
+	if (isSubLife == true)
+	{
 		m_Life--;
+		if(m_pNumber != nullptr)
+			m_pNumber->SetNumber(m_Life);
+	}
 
 	if (m_Life <= 0)
 	{
@@ -192,6 +199,8 @@ void CSceneGame::GameEnd()
 {
 	// ライフをゼロにする
 	m_Life = 0;
+	if(m_pNumber != nullptr)
+		m_pNumber->SetNumber(m_Life);
 
 	// 薄暗いポリゴン
 	if(m_pDarkPolygon != nullptr)
