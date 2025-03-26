@@ -26,6 +26,7 @@ public:
 	void Draw();
 
 	void ReleaseBlock();
+	bool IsAllReleaseBlock();
 
 	bool CollisionBlock(const D3DXVECTOR3& pos, const D3DXVECTOR2& size, D3DXVECTOR3* pMove);
 

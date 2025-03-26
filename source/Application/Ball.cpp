@@ -83,18 +83,27 @@ void CBall::Update()
 	// 画面外との制限
 
 	if (pos.x >= SCREEN_WIDTH - CApplication::SCREEN_SIDE_WIDTH || pos.x <= CApplication::SCREEN_SIDE_WIDTH)
+	{
 		m_move.x *= -1.0f;
+		// サウンド再生
+		m_pBallSound->Play(CSound::SE_HIT);
+	}
 	else if (pos.y <= 0.0f)
 	{
 		m_move.y *= -1.0f;
+		// サウンド再生
+		m_pBallSound->Play(CSound::SE_HIT);
 	}
 	else if (pos.y >= SCREEN_HEIGHT)
 	{
 		// 画面の一番下に当たった
 
+		// サウンド再生
+		m_pBallSound->Play(CSound::SE_EXPLOSION);
+
 		// リスタート
 		auto game = static_cast<CSceneGame*>(CApplication::GetInstance()->GetScene()->GetCurrentScene());
-		game->Resporn();
+		game->Resporn(true);
 
 		// 削除
 		Uninit();
@@ -113,6 +122,21 @@ void CBall::Update()
 
 			// スコアを加算する（倍率処理の上で）
 			CScoreManager::GetInstance()->AddScore(100 * m_NumRate);
+
+			// ブロックが全滅したらリスポーン処理
+			if (CBlockManager::GetInstance()->IsAllReleaseBlock())
+			{				
+				auto game = static_cast<CSceneGame*>(CApplication::GetInstance()->GetScene()->GetCurrentScene());
+				if (game != nullptr)
+				{
+					// 自身は削除
+					Uninit();
+
+					// リスポーン
+					game->Resporn(false);
+					return;
+				}
+			}
 
 			// 倍率を上げてテクスチャ設定（1～9なので-1してます）
 			m_NumRate++;
@@ -197,7 +221,7 @@ void CBall::Update()
 					m_move.y = -MOVE_POWER;
 
 				// 当たらない時間をつくる
-				isVsPlayerDoneCounter = 10;
+				isVsPlayerDoneCounter = NO_COLLISION_TO_PLAYER_TIME;
 			}
 
 		}

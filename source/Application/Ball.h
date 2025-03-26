@@ -22,6 +22,7 @@ public:
 
 private:
 	static const int MOVE_POWER = 5;
+	static const int NO_COLLISION_TO_PLAYER_TIME = 15;
 	D3DXVECTOR3 m_move;
 
 	CSound* m_pBallSound;					// ボール用のサウンド

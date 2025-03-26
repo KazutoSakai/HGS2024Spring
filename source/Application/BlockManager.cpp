@@ -4,6 +4,7 @@
 
 #include "collision.h"
 #include "ScoreManager.h"
+#include "SceneGame.h"
 
 CBlockManager::CBlockManager()
 {
@@ -64,6 +65,19 @@ void CBlockManager::ReleaseBlock()
 			}
 		}
 	}
+}
+
+bool CBlockManager::IsAllReleaseBlock()
+{
+	for (int i = 0; i < BLOCK_W * BLOCK_H; i++)
+	{
+		if (m_pBlockList[i] != nullptr)
+		{
+			return false;
+		}
+	}
+
+	return true;
 }
 
 bool CBlockManager::CollisionBlock(const D3DXVECTOR3& pos, const D3DXVECTOR2& size, D3DXVECTOR3* pMove)
