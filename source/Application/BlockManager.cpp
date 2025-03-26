@@ -99,9 +99,6 @@ bool CBlockManager::CollisionBlock(const D3DXVECTOR3& pos, const D3DXVECTOR2& si
 			pMove->x = outMove.x;
 			pMove->y = outMove.y;
 
-			// スコアを加算する
-			CScoreManager::GetInstance()->AddScore(100);
-
 			// ブロックは削除
 			pBlock->Uninit();
 			m_pBlockList[i] = nullptr;

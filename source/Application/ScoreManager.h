@@ -27,9 +27,6 @@ public:
 	void SetScore(int score);
 	void SetDestScore(int dest) { m_destScore = dest; }
 
-	static CScoreManager* Create();
-
-
 private:
 	static const int SCORE_NUM = 8;
 

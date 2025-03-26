@@ -7,10 +7,19 @@
 #include "Player.h"
 
 #include "SceneGame.h"
+#include "ScoreManager.h"
+#include "RateBallManager.h"
 
 CBall::CBall()
 {
+	m_move = D3DXVECTOR3(0, 0, 0);
+	m_pBallSound = nullptr;
+	m_PlayerID = 0;
 	isVsPlayerDoneCounter = false;
+
+	m_NumRate = 0;
+	for (int i = 0; i < RATE_MAX; i++)
+		m_NumRateID[i] = 0;
 }
 
 HRESULT CBall::Init()
@@ -30,8 +39,18 @@ HRESULT CBall::Init()
 
 	// テクスチャ
 	auto pTex = CApplication::GetInstance()->GetTexture();
-	int id = pTex->LoadTexture("data/sample/texture/bullet_64.png");
-	BindTexture(pTex->GetTexture(id));
+	m_NumRateID[0] = pTex->LoadTexture("data/sample/texture/bullet_64.png");
+	m_NumRateID[1] = pTex->LoadTexture("data/sample/texture/mag_2.png");
+	m_NumRateID[2] = pTex->LoadTexture("data/sample/texture/mag_3.png");
+	m_NumRateID[3] = pTex->LoadTexture("data/sample/texture/mag_4.png");
+	m_NumRateID[4] = pTex->LoadTexture("data/sample/texture/mag_5.png");
+	m_NumRateID[5] = pTex->LoadTexture("data/sample/texture/mag_6.png");
+	m_NumRateID[6] = pTex->LoadTexture("data/sample/texture/mag_7.png");
+	m_NumRateID[7] = pTex->LoadTexture("data/sample/texture/mag_8.png");
+	m_NumRateID[8] = pTex->LoadTexture("data/sample/texture/mag_9.png");
+	BindTexture(pTex->GetTexture(m_NumRateID[0]));
+	m_NumRate = DEFAULT_RATE;		// 1倍スタート
+
 
 	return S_OK;
 }
@@ -85,6 +104,19 @@ void CBall::Update()
 			// サウンド再生
 			m_pBallSound->Play(CSound::SE_HIT);
 
+			// スコアを加算する（倍率処理の上で）
+			CScoreManager::GetInstance()->AddScore(100 * m_NumRate);
+
+			// 倍率を上げてテクスチャ設定（1～9なので-1してます）
+			m_NumRate++;
+			if (m_NumRate >= RATE_MAX)
+			{
+				CRateBallManager::GetInstance()->Regist(m_NumRate);
+				m_NumRate = DEFAULT_RATE;
+			}
+			auto pTex = CApplication::GetInstance()->GetTexture();
+			BindTexture(pTex->GetTexture(m_NumRateID[m_NumRate - 1]));
+
 			// 移動方向を変える
 			if (outDir.x > 0)
 				m_move.x = MOVE_POWER;
@@ -135,6 +167,11 @@ void CBall::Update()
 			{
 				// サウンド再生
 				m_pBallSound->Play(CSound::SE_SHOT);
+
+				// 倍率を戻す
+				m_NumRate = DEFAULT_RATE;
+				auto pTex = CApplication::GetInstance()->GetTexture();
+				BindTexture(pTex->GetTexture(m_NumRateID[m_NumRate - 1]));
 
 				// 移動方向を変える
 				if (BVsPOut.x > 0)

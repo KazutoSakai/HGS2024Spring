@@ -65,15 +65,6 @@ void CScoreManager::Draw()
 
 }
 
-CScoreManager* CScoreManager::Create()
-{
-	CScoreManager* p = DBG_NEW CScoreManager();
-
-	p->Init();
-
-	return p;
-}
-
 void CScoreManager::AddScore(int score)
 {
 	m_destScore += score;

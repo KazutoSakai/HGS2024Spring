@@ -153,6 +153,7 @@
     <ClCompile Include="source\Application\effect.cpp" />
     <ClCompile Include="source\Application\number.cpp" />
     <ClCompile Include="source\Application\Player.cpp" />
+    <ClCompile Include="source\Application\RateBallManager.cpp" />
     <ClCompile Include="source\Application\SceneGame.cpp" />
     <ClCompile Include="source\Application\SceneManager.cpp" />
     <ClCompile Include="source\Application\SceneRanking.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="source\Application\effect.h" />
     <ClInclude Include="source\Application\number.h" />
     <ClInclude Include="source\Application\Player.h" />
+    <ClInclude Include="source\Application\RateBallManager.h" />
     <ClInclude Include="source\Application\SceneBase.h" />
     <ClInclude Include="source\Application\SceneGame.h" />
     <ClInclude Include="source\Application\SceneManager.h" />
