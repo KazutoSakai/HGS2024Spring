@@ -27,7 +27,7 @@ public:
 
 	//---------------------
 	// íËêî
-	static const int SCREEN_SIDE_WIDTH = 200;
+	static const int SCREEN_SIDE_WIDTH = 256;
 	static const int SCREEN_GAME_WIDTH = SCREEN_WIDTH - SCREEN_SIDE_WIDTH - SCREEN_SIDE_WIDTH;
 	static const int SCREEN_CENTER_X = SCREEN_WIDTH / 2;
 	static const int SCREEN_CENTER_Y = SCREEN_HEIGHT / 2;
