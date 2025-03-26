@@ -21,8 +21,8 @@ CSound::CSound()
 	m_param[SOUND_LABEL::BGM000] = { "data/sample/sound/bgm/bgm000.wav", -1 };
 	m_param[SOUND_LABEL::BGM001] = { "data/sample/sound/bgm/bgm001.wav", -1 };
 	m_param[SOUND_LABEL::BGM002] = { "data/sample/sound/bgm/bgm002.wav", -1 };
-	m_param[SOUND_LABEL::SE_SHOT] = { "data/sample/sound/se/shot000.wav", 0 };
-	m_param[SOUND_LABEL::SE_HIT] = { "data/sample/sound/se/hit000.wav", 0 };
+	m_param[SOUND_LABEL::SE_SHOT] = { "data/sample/sound/se/bounce001.wav", 0 };
+	m_param[SOUND_LABEL::SE_HIT] = { "data/sample/sound/se/bounce000.wav", 0 };
 	m_param[SOUND_LABEL::SE_EXPLOSION] = { "data/sample/sound/se/explosion000.wav", 0 };
 }
 

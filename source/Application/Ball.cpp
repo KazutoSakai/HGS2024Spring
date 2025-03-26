@@ -22,6 +22,9 @@ HRESULT CBall::Init()
 
 	m_move = D3DXVECTOR3(MOVE_POWER, MOVE_POWER, 0.0f);
 
+	// ボール用のサウンドインスタンス作成(堺)
+	m_pBallSound = CApplication::GetInstance()->GetSound();
+
 	// テクスチャ
 	auto pTex = CApplication::GetInstance()->GetTexture();
 	int id = pTex->LoadTexture("data/sample/texture/bullet_64.png");
@@ -61,6 +64,9 @@ void CBall::Update()
 			if (outDir.y > 0 && m_move.y < 0 || outDir.y < 0 && m_move.y > 0)
 				m_move.y *= -1.0f;
 
+			// サウンド再生
+			m_pBallSound->Play(CSound::SE_HIT);
+
 			// 法線（挙動がおかしい）
 			//m_move = outDir;
 		}
@@ -90,10 +96,21 @@ void CBall::Update()
 			{
 				// 仮処理（移動方向に対して中心から上下どちらで当たったかを考慮できていない）
 				if (BVsPOut.x > 0 && m_move.x < 0 || BVsPOut.x < 0 && m_move.x > 0)
+				{
 					m_move.x *= -1.0f;
+
+					// サウンド再生
+					m_pBallSound->Play(CSound::SE_SHOT);
+				}
 				if (BVsPOut.y > 0 && m_move.y < 0 || BVsPOut.y < 0 && m_move.y > 0)
+				{
 					m_move.y *= -1.0f;
+
+					// サウンド再生
+					m_pBallSound->Play(CSound::SE_SHOT);
+				}
 			}
+
 		}
 	}
 
