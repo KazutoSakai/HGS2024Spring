@@ -34,6 +34,8 @@ private:
 	static const int DEFAULT_RATE = 1;
 	int m_NumRate;				// 1Å`9
 	int m_NumRateID[RATE_MAX];
+
+	void RateUp();
 };
 
 #endif

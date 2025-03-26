@@ -6,6 +6,14 @@
 class CPlayer : public CObject2D
 {
 public:
+
+	enum class ColorState
+	{
+		DEFAULT,
+		GREEN,
+		RED,
+	};
+
 	CPlayer();
 	~CPlayer() {};
 
@@ -16,8 +24,13 @@ public:
 
 	static CPlayer* Create();
 
+	void SetColorState(ColorState state);
+
 private:
 	static const int MOVE_POWER = 8;
+
+	ColorState m_ColorState;
+	float m_ColorTimer = 0;
 };
 
 #endif

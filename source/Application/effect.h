@@ -10,7 +10,7 @@
 class CEffect : public CObject2D
 {
 public:
-	CEffect(Priority priority = Priority::Effect_Low);	// コンストラクタ
+	CEffect(Priority priority = Priority::Low);	// コンストラクタ
 	~CEffect() override;								// デストラクタ
 
 	HRESULT Init() override;							// 初期化
