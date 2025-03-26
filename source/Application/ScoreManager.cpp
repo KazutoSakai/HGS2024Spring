@@ -55,19 +55,64 @@ void CScoreManager::Uninit()
 void CScoreManager::Update()
 {
 	// 目標スコアまで加算する
-	if (m_score + 1000000 < m_destScore)
+	if (m_score + 20000 < m_destScore)
 	{
-		m_score += 111111;
-		SetScore(m_score);
-	}
-	else if (m_score + 100000 < m_destScore)
-	{
-		m_score += 11111;
+		m_score += 2000;
 		SetScore(m_score);
 	}
 	else if (m_score + 10000 < m_destScore)
 	{
-		m_score += 1111;
+		m_score += 1000;
+		SetScore(m_score);
+	}
+	else if (m_score + 5000 < m_destScore)
+	{
+		m_score += 500;
+		SetScore(m_score);
+	}
+	else if (m_score + 4000 < m_destScore)
+	{
+		m_score += 400;
+		SetScore(m_score);
+	}
+	else if (m_score + 3000 < m_destScore)
+	{
+		m_score += 300;
+		SetScore(m_score);
+	}
+	else if (m_score + 2000 < m_destScore)
+	{
+		m_score += 200;
+		SetScore(m_score);
+	}
+	else if (m_score + 1000 < m_destScore)
+	{
+		m_score += 100;
+		SetScore(m_score);
+	}
+	else if (m_score + 500 < m_destScore)
+	{
+		m_score += 50;
+		SetScore(m_score);
+	}
+	else if (m_score + 400 < m_destScore)
+	{
+		m_score += 40;
+		SetScore(m_score);
+	}
+	else if (m_score + 300 < m_destScore)
+	{
+		m_score += 30;
+		SetScore(m_score);
+	}
+	else if (m_score + 200 < m_destScore)
+	{
+		m_score += 20;
+		SetScore(m_score);
+	}
+	else if (m_score + 100 < m_destScore)
+	{
+		m_score += 10;
 		SetScore(m_score);
 	}
 	else if (m_score < m_destScore)
