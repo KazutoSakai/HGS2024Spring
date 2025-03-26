@@ -17,6 +17,7 @@ class CTimer;
 class CSideUI;
 class CObject2D;
 class CBall;
+class CBestScore;
 
 /// <summary>
 /// ƒQ[ƒ€ƒƒCƒ“‰æ–ÊŠÇ—
@@ -60,6 +61,8 @@ private:
 	CSideUI* m_pSideR;
 
 	CObject2D* m_pDarkPolygon;
+
+	CBestScore* m_pBestScore;
 
 };
 

@@ -23,6 +23,8 @@
 
 #include "RateBallManager.h"
 
+#include "BestScore.h"
+
 CSceneGame::CSceneGame() : m_pPlayer(nullptr), m_pTimer(nullptr), m_pSideL(nullptr), m_pSideR(nullptr), m_pDarkPolygon(nullptr)
 {
 	m_Life = 0;
@@ -42,18 +44,7 @@ HRESULT CSceneGame::Init()
 	CBlockManager::GetInstance()->Init();
 
 	// ベストスコア
-	{
-		float startX = SCREEN_WIDTH - CApplication::SCREEN_SIDE_WIDTH;
-		const float startY = 0;
-		const float sizeX = 28;
-		for (int x = 0; x < 8; x++)
-		{
-			auto pNum = CNumber::Create(D3DXVECTOR3(startX + x * sizeX, startY, 0));
-			pNum->SetPosType(CObject2D::POSTYPE::LeftTop);
-			pNum->SetSize(D3DXVECTOR2(sizeX, 56));
-			pNum->SetNumber(x);
-		}
-	}
+	m_pBestScore = CBestScore::Create();
 
 	// 現在のスコア
 	CScoreManager::GetInstance()->Init();
@@ -115,6 +106,10 @@ void CSceneGame::Update()
 	{
 		if (pInput->GetTrigger(CInputManager::InputType::Decide_A))
 		{
+			// ベストスコアを保存
+			if(m_pBestScore != nullptr)
+				m_pBestScore->SaveBestScore();
+
 			CApplication::GetInstance()->GetScene()->ChangeScene(CSceneManager::SceneType::Game, true);
 			return;
 		}
@@ -178,19 +173,19 @@ void CSceneGame::GameEnd()
 
 void CSceneGame::RestartGame()
 {
-	// 破棄、後処理
-	if (m_pPlayer != nullptr)
-		m_pPlayer->Uninit();
-	CBlockManager::GetInstance()->ReleaseBlock();
-	CScoreManager::GetInstance()->Uninit();
-	CRateBallManager::GetInstance()->Uninit();
-	if (m_pTimer != nullptr)
-		m_pTimer->Uninit();
-	if (m_pSideL != nullptr)
-		m_pSideL->Uninit();
-	if (m_pSideR != nullptr)
-		m_pSideR->Uninit();
+	//// 破棄、後処理
+	//if (m_pPlayer != nullptr)
+	//	m_pPlayer->Uninit();
+	//CBlockManager::GetInstance()->ReleaseBlock();
+	//CScoreManager::GetInstance()->Uninit();
+	//CRateBallManager::GetInstance()->Uninit();
+	//if (m_pTimer != nullptr)
+	//	m_pTimer->Uninit();
+	//if (m_pSideL != nullptr)
+	//	m_pSideL->Uninit();
+	//if (m_pSideR != nullptr)
+	//	m_pSideR->Uninit();
 
-	// 初期設定
-	Init();
+	//// 初期設定
+	//Init();
 }
