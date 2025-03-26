@@ -25,6 +25,8 @@ public:
 	void Update();
 	void Draw();
 
+	void ReleaseBlock();
+
 	bool CollisionBlock(const D3DXVECTOR3& pos, const D3DXVECTOR2& size, D3DXVECTOR3* pMove);
 
 	static CBlockManager* Create();

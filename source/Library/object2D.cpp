@@ -24,6 +24,8 @@ CObject2D::CObject2D(CObject::Priority priority) : CObject(priority)
 	m_uv.rightU = m_uv.bottomV = 1.0f;
 
 	m_posType = POSTYPE::Center;
+
+	m_IsDrawFlg = true;
 }
 
 /// <summary>
@@ -102,6 +104,9 @@ void CObject2D::Update()
 /// </summary>
 void CObject2D::Draw()
 {
+	if (m_IsDrawFlg == false)
+		return;
+
 	if (m_pVtxBuf != nullptr)
 	{
 		CRenderer* pRenderer = CApplication::GetInstance()->GetRenderer();

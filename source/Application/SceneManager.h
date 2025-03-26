@@ -40,6 +40,8 @@ public:
 	void Draw();
 	void ChangeScene(SceneType sceneType, bool killObjects);
 
+	CSceneBase* GetCurrentScene() { return m_pScene; }
+
 private:
 	//---------------------
 	// Member

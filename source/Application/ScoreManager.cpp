@@ -42,7 +42,11 @@ HRESULT CScoreManager::Init()
 
 void CScoreManager::Uninit()
 {
-
+	for (int x = 0; x < SCORE_NUM; x++)
+	{
+		m_pNumberList[x]->Uninit();
+		m_pNumberList[x] = nullptr;
+	}
 }
 
 void CScoreManager::Update()

@@ -16,6 +16,8 @@ public:
 
 	static CTimer* Create();
 
+	void StopTimer() { m_flgTimeRun = false; };
+
 private:
 	static const int TIME_NUM = 3;
 	static const int START_TIME = 90;	// •b
@@ -24,6 +26,8 @@ private:
 	CNumber* m_pNumberList[TIME_NUM];
 
 	void SetTime(int time);
+
+	bool m_flgTimeRun;
 
 };
 

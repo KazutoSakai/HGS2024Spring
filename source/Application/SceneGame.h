@@ -12,6 +12,11 @@
 
 #include "SceneBase.h"
 
+class CPlayer;
+class CTimer;
+class CSideUI;
+class CObject2D;
+
 /// <summary>
 /// ÉQÅ[ÉÄÉÅÉCÉìâÊñ ä«óù
 /// </summary>
@@ -20,7 +25,7 @@ class CSceneGame : public CSceneBase
 public:
 	//---------------------
 	// public Method
-	CSceneGame() {};
+	CSceneGame();
 	~CSceneGame() override {};
 
 	HRESULT Init() override;
@@ -30,10 +35,26 @@ public:
 
 	//---------------------
 	// static Method
-	static CSceneGame* Create();
+	//static CSceneGame* Create();
+
+	void Resporn();
+	void GameEnd();
+	void RestartGame();
 
 private:
 
+	static const int LIFE_MAX = 3;
+
+	CPlayer* m_pPlayer;
+
+	int m_Life;
+
+	CTimer* m_pTimer;
+
+	CSideUI* m_pSideL;
+	CSideUI* m_pSideR;
+
+	CObject2D* m_pDarkPolygon;
 
 };
 

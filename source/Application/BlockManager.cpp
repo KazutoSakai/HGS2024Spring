@@ -50,6 +50,22 @@ void CBlockManager::Draw()
 
 }
 
+void CBlockManager::ReleaseBlock()
+{
+	for (int x = 0; x < BLOCK_W; x++)
+	{
+		for (int y = 0; y < BLOCK_H; y++)
+		{
+			int index = y * BLOCK_W + x;
+			if (m_pBlockList[index] != nullptr)
+			{
+				m_pBlockList[index]->Uninit();
+				m_pBlockList[index] = nullptr;
+			}
+		}
+	}
+}
+
 bool CBlockManager::CollisionBlock(const D3DXVECTOR3& pos, const D3DXVECTOR2& size, D3DXVECTOR3* pMove)
 {
 	CollisionSquare sq;

@@ -76,6 +76,8 @@ public:
 	const POSTYPE& GetPosType() const;			// 頂点位置の設定方法
 	void SetPosType(const POSTYPE& type);		// 頂点位置の設定方法
 
+	void SetDrawFlg(bool flg) { m_IsDrawFlg = flg; }
+
 private:
 	//---------------------
 	// private Member
@@ -85,6 +87,8 @@ private:
 	D3DXVECTOR2 m_size;						// 縦横サイズ
 	TEXTURE_UV m_uv;						// テクスチャ座標
 	POSTYPE m_posType;						// 頂点位置の設定方法
+
+	bool m_IsDrawFlg;						// 描画するか
 };
 
 #endif

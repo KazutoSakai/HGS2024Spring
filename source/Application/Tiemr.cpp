@@ -8,6 +8,7 @@ CTimer::CTimer()
 		m_pNumberList[i] = nullptr;
 
 	m_time = 0;
+	m_flgTimeRun = false;
 }
 
 CTimer::~CTimer()
@@ -33,6 +34,7 @@ HRESULT CTimer::Init()
 
 	// êßå¿éûä‘ÇÃécÇËÉ^ÉCÉÄ
 	m_time = START_TIME;
+	m_flgTimeRun = true;
 
 	return S_OK;
 }
@@ -44,9 +46,12 @@ void CTimer::Uninit()
 
 void CTimer::Update()
 {
-	m_time -= GetWorldDeltaSeconds();
+	if (m_flgTimeRun)
+	{
+		m_time -= GetWorldDeltaSeconds();
 
-	SetTime((int)m_time);
+		SetTime((int)m_time);
+	}
 }
 
 void CTimer::Draw()

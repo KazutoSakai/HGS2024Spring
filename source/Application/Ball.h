@@ -25,11 +25,8 @@ private:
 	D3DXVECTOR3 m_move;
 
 	CSound* m_pBallSound;					// ボール用のサウンド
-
 	int m_PlayerID;
-
 	int isVsPlayerDoneCounter = 0;		// 前回のフレームでプレイヤーと当たり判定したか
-
 };
 
 #endif
