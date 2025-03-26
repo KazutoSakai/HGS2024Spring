@@ -22,6 +22,9 @@ HRESULT CBall::Init()
 
 	m_move = D3DXVECTOR3(MOVE_POWER, MOVE_POWER, 0.0f);
 
+	// ボール用のサウンドインスタンス作成(堺)
+	m_pBallSound = CApplication::GetInstance()->GetSound();
+
 	// テクスチャ
 	auto pTex = CApplication::GetInstance()->GetTexture();
 	int id = pTex->LoadTexture("data/sample/texture/bullet_64.png");
@@ -63,8 +66,13 @@ void CBall::CollisionUpdate()
 	// ブロックとの当たり判定（仮）
 	{
 		D3DXVECTOR3 outDir = m_move;	// コピー
+		// 当たった
 		if (CBlockManager::GetInstance()->CollisionBlock(pos, GetSize(), &outDir))
 		{
+			// サウンド再生
+			m_pBallSound->Play(CSound::SE_HIT);
+
+			// 移動方向を変える
 			if (outDir.x > 0)
 				m_move.x = MOVE_POWER;
 			else if (outDir.x < 0)
@@ -107,8 +115,14 @@ void CBall::CollisionUpdate()
 			};
 
 			D3DXVECTOR2 BVsPOut = D3DXVECTOR2(m_move.x, m_move.y);	// コピー
+
+			// 当たった
 			if (CollisionSqVsCircleReflection(sq, cr, &BVsPOut))
 			{
+				// サウンド再生
+				m_pBallSound->Play(CSound::SE_SHOT);
+
+				// 移動方向を変える
 				if (BVsPOut.x > 0)
 					m_move.x = MOVE_POWER;
 				else if (BVsPOut.x < 0)
@@ -119,8 +133,10 @@ void CBall::CollisionUpdate()
 				else if (BVsPOut.y < 0)
 					m_move.y = -MOVE_POWER;
 
+				// 当たらない時間をつくる
 				isVsPlayerDoneCounter = 10;
 			}
+
 		}
 	}
 	else if (isVsPlayerDoneCounter > 0)

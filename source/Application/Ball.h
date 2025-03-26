@@ -2,6 +2,7 @@
 #define _BALL_H_
 
 #include "object2D.h"
+#include "sound.h"
 
 class CBall : public CObject2D
 {
@@ -22,6 +23,8 @@ public:
 private:
 	static const int MOVE_POWER = 5;
 	D3DXVECTOR3 m_move;
+
+	CSound* m_pBallSound;					// ボール用のサウンド
 
 	int m_PlayerID;
 
